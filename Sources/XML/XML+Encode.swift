@@ -8,11 +8,19 @@
  * See CONTRIBUTORS.txt for the list of the project authors
  */
 
-import XCTest
-@testable import XMLTests
+extension XML.Encoding {
+    var rawValue: String {
+        switch self {
+        case .utf8: return "utf-8"
+        }
+    }
+}
 
-XCTMain([
-    testCase(XMLDecodeTests.allTests),
-    testCase(XMLStringTests.allTests),
-    testCase(XMLTests.allTests),
-])
+extension XML.Standalone {
+    var rawValue: String {
+        switch self {
+        case .yes: return "yes"
+        case .no: return "no"
+        }
+    }
+}
