@@ -12,5 +12,6 @@ import XCTest
 @testable import XMLTests
 
 XCTMain([
+    testCase(XMLDecodeTests.allTests),
     testCase(XMLTests.allTests),
 ])

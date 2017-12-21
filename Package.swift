@@ -18,13 +18,16 @@ let package = Package(
     ],
     dependencies: [
         .package(
+            url: "https://github.com/tris-foundation/stream.git",
+            .branch("master")),
+        .package(
             url: "https://github.com/tris-foundation/test.git",
             .branch("master"))
     ],
     targets: [
         .target(
             name: "XML",
-            dependencies: []),
+            dependencies: ["Stream"]),
         .testTarget(
             name: "XMLTests",
             dependencies: ["XML", "Test"]),
