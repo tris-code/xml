@@ -16,15 +16,26 @@ class XMLStringTests: TestCase {
         let document = XML.Document()
         let expected = """
             <?xml version="1.0" encoding="utf-8" standalone="no"?>
+
             """
+
         assertEqual(document.xml, expected)
-        assertEqual(document.xmlCompact, expected)
+        assertEqual(document.xmlCompact[...], expected.dropLast())
     }
 
     func testElement() {
         let element = XML.Element(name: "element")
         assertEqual(element.xml, "<element/>\n")
         assertEqual(element.xmlCompact, "<element/>")
+    }
+
+    func testAttributes() {
+        let element = XML.Element(
+            name: "element",
+            attributes: ["name" : "value"])
+
+        assertEqual(element.xml, "<element name=\"value\"/>\n")
+        assertEqual(element.xmlCompact, "<element name=\"value\"/>")
     }
 
     func testTextChildren() {
@@ -129,6 +140,7 @@ class XMLStringTests: TestCase {
     static var allTests = [
         ("testDocument", testDocument),
         ("testElement", testElement),
+        ("testAttributes", testAttributes),
         ("testTextChildren", testTextChildren),
         ("testElementChildren", testElementChildren),
         ("testElementChildrens", testElementChildrens),

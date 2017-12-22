@@ -9,7 +9,7 @@
  */
 
 extension XML.Document {
-    func encodeHeader(to xml: inout String) {
+    func encodeHeader(to xml: inout String, prettify: Bool) {
         xml += "<?xml"
 
         if let version = version {
@@ -31,11 +31,15 @@ extension XML.Document {
         }
 
         xml += "?>"
+
+        if prettify {
+            xml += "\n"
+        }
     }
 
     public var xml: String {
         var xml = ""
-        encodeHeader(to: &xml)
+        encodeHeader(to: &xml, prettify: true)
         if let root = root {
             root.encode(to: &xml, prettify: true)
         }
@@ -44,7 +48,7 @@ extension XML.Document {
 
     public var xmlCompact: String {
         var xml = ""
-        encodeHeader(to: &xml)
+        encodeHeader(to: &xml, prettify: false)
         if let root = root {
             root.encode(to: &xml, prettify: false)
         }
@@ -67,8 +71,9 @@ extension XML.Element {
         for (name, value) in attributes {
             xml += " "
             xml += name
-            xml += "="
+            xml += "=\""
             xml += value
+            xml += "\""
         }
 
         guard children.count > 0 else {
