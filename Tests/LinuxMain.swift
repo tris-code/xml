@@ -13,6 +13,7 @@ import XCTest
 
 XCTMain([
     testCase(XMLDecodeTests.allTests),
+    testCase(XMLEncodeTests.allTests),
     testCase(XMLStringTests.allTests),
     testCase(XMLTests.allTests),
 ])
