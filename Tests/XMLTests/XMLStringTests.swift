@@ -135,15 +135,4 @@ class XMLStringTests: TestCase {
         let expectedCompact = "<root>text<element1>text1</element1>text2</root>"
         assertEqual(element.xmlCompact, expectedCompact)
     }
-
-
-    static var allTests = [
-        ("testDocument", testDocument),
-        ("testElement", testElement),
-        ("testAttributes", testAttributes),
-        ("testTextChildren", testTextChildren),
-        ("testElementChildren", testElementChildren),
-        ("testElementChildrens", testElementChildrens),
-        ("testCrazyChildrens", testCrazyChildrens),
-    ]
 }

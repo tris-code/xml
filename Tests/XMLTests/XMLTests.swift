@@ -46,14 +46,4 @@ class XMLTests: TestCase {
         let element = XML.Element(name: "root", children: [.text("text")])
         assertEqual(element.value, "text")
     }
-
-
-    static var allTests = [
-        ("testDocument", testDocument),
-        ("testElement", testElement),
-        ("testElementNode", testElementNode),
-        ("testTextNode", testTextNode),
-        ("testElementChildren", testElementChildren),
-        ("testNodeValue", testNodeValue),
-    ]
 }

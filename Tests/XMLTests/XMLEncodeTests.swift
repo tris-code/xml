@@ -158,15 +158,4 @@ class XMLEncodeTests: TestCase {
             fail(String(describing: error))
         }
     }
-
-
-    static var allTests = [
-        ("testDocument", testDocument),
-        ("testSelfElement", testSelfElement),
-        ("testTextElement", testTextElement),
-        ("testElement", testElement),
-        ("testElementChildren", testElementChildren),
-        ("testSelfElementAttributes", testSelfElementAttributes),
-        ("testTextElementAttributes", testTextElementAttributes),
-    ]
 }
