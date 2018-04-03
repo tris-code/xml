@@ -8,6 +8,8 @@
  * See CONTRIBUTORS.txt for the list of the project authors
  */
 
+import Stream
+
 extension UInt8 {
     static let whitespace = UInt8(ascii: " ")
     static let doubleQuote = UInt8(ascii: "\"")
