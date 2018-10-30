@@ -21,7 +21,7 @@ extension InputByteStream {
 
 class XMLDecodeTests: TestCase {
     func testDocument() {
-        do {
+        scope {
             let stream = InputByteStream("""
                 <?xml version="1.0" encoding="utf-8" standalone="no"?>
                 <root>
@@ -40,8 +40,6 @@ class XMLDecodeTests: TestCase {
                         name: "element",
                         children: [.text("text")]))
                 ]))
-        } catch {
-            fail(String(describing: error))
         }
     }
 
@@ -62,29 +60,25 @@ class XMLDecodeTests: TestCase {
     }
 
     func testSelfElement() {
-        do {
+        scope {
             let stream = InputByteStream("<element/>")
             let element = try XML.Element(from: stream)
             assertEqual(element, XML.Element(name: "element"))
-        } catch {
-            fail(String(describing: error))
         }
     }
 
     func testTextElement() {
-        do {
+        scope {
             let stream = InputByteStream("<element>text</element>")
             let element = try XML.Element(from: stream)
             assertEqual(element, XML.Element(
                 name: "element",
                 children: [.text("text")]))
-        } catch {
-            fail(String(describing: error))
         }
     }
 
     func testElement() {
-        do {
+        scope {
             let stream = InputByteStream("""
                 <root>
                     <element>text</element>
@@ -97,13 +91,11 @@ class XMLDecodeTests: TestCase {
                     name: "element",
                     children: [.text("text")]))
                 ]))
-        } catch {
-            fail(String(describing: error))
         }
     }
 
     func testElementChildren() {
-        do {
+        scope {
             let stream = InputByteStream("""
                 <root>
                     <element>text</element>
@@ -122,26 +114,22 @@ class XMLDecodeTests: TestCase {
                     .element(XML.Element(
                         name: "element3", children: [.text("text3")]))
                 ]))
-        } catch {
-            fail(String(describing: error))
         }
     }
 
     func testSelfElementAttributes() {
-        do {
+        scope {
             let stream = InputByteStream("<element name=\"value\"/>")
             let element = try XML.Element(from: stream)
             assertEqual(element, XML.Element(
                 name: "element",
                 attributes: ["name" : "value"]
             ))
-        } catch {
-            fail(String(describing: error))
         }
     }
 
     func testTextElementAttributes() {
-        do {
+        scope {
             let stream = InputByteStream(
                 "<element name=\"value\">text</element>")
             let element = try XML.Element(from: stream)
@@ -150,8 +138,6 @@ class XMLDecodeTests: TestCase {
                 attributes: ["name" : "value"],
                 children: [.text("text")]
             ))
-        } catch {
-            fail(String(describing: error))
         }
     }
 }
