@@ -1,14 +1,3 @@
-/******************************************************************************
- *                                                                            *
- * Tris Foundation disclaims copyright to this source code.                   *
- * In place of a legal notice, here is a blessing:                            *
- *                                                                            *
- *     May you do good and not evil.                                          *
- *     May you find forgiveness for yourself and forgive others.              *
- *     May you share freely, never taking more than you give.                 *
- *                                                                            *
- ******************************************************************************/
-
 import Stream
 
 extension XML.Document {
@@ -126,7 +115,7 @@ extension XML.Element {
         guard closingName == name else {
             throw XML.Error.invalidClosingTagNameMismatch
         }
-        
+
         self.name = name.value
         self.attributes = attributes.values
         self.children = children
